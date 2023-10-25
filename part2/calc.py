@@ -12,7 +12,7 @@ while True:
         b = int(input("На ноль делить нельзя! Введите другое число:"))
         file.write("На ноль делить нельзя\n")
         file.write(f"{b}\n")
-    except ValueError:
+    except SyntaxError:
         a = int(input("Нужно ввести целое число! Введите другое число:"))
         b = int(input("Нужно ввести целое число! Введите другое число:"))
         file.write("некорректный ввод\n")
@@ -23,15 +23,12 @@ while True:
         oper = input("Операция: + - * / ** // %:")
         file.write("некорректный ввод операции\n")
         file.write(f"{oper}\n")
-    else:
-        print(f" отделения {a} на {b} равно {result}")
     finally:
         result = eval(f"{a}{oper}{b}")
-        file.write(f"{a} {oper} {b} равно {result}")
+        file.write(f"{a} {oper} {b} равно {result}\n)
         is_continue = input("Продолжать? y/n:")
         if is_continue == "n":
             print('Good bye!')
-            file.write("______________")
+            file.write("\n______________\n")
             file.close()
             break
-        file.close()
